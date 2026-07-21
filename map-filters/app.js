@@ -163,7 +163,7 @@ const thrillers = movies.filter(
 );
 
 // - Filter the movies to create an array of drama movies with IMDb ratings above 8.5.
-const dramas = movies.filter(
+const dramasImdb = movies.filter(
   (movie) => movie.genre == "Drama" && movie.imdbRating > 8.5,
 );
 
@@ -174,11 +174,13 @@ const leoActions = movies.filter(
 );
 
 // - Chain operations to find all drama movies featuring Christian Bale.
-const christianDrama = movies.filter(
-  (movie) => movie.genre == "drama" && movie.actors.includes("Christian Bale"),
+const dramas = movies.filter((movie) => movie.genre == "Drama");
+
+const christianDramas = dramas.filter((movie) =>
+  movie.actors.includes("Christian Bale"),
 );
 
 // - Chain operations to find all drama movies featuring Tim Robbins.
-const timDramas = movies.filter(
-  (movie) => movie.genre == "Drama" && movie.actors.includes("Tim Robbins"),
+const timDramas = dramas.filter((movie) =>
+  movie.actors.includes("Tim Robbins"),
 );
