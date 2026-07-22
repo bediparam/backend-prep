@@ -1,0 +1,37 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div class="w-[400px] mx-auto my-20">
+      <input
+        name="height"
+        id="height"
+        class="border-2 w-full text-2xl p-2 my-2 rounded-xl"
+        type="number"
+        placeholder="Height (in cm)"
+      />
+      <input
+        name="weight"
+        id="weight"
+        class="border-2 w-full text-2xl p-2 my-2 rounded-xl"
+        type="number"
+        placeholder="Weight (in kg)"
+      />
+      <button
+        id="btn"
+        onclick="calculateBMI()"
+        class="border-2 text-2xl p-2 my-2 bg-grey rounded-xl"
+        type="button"
+      >
+        Calculate BMI
+      </button>
+      <p id="bmi" class="text-2xl p-2 my-2 hidden">I am BMI</p>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
