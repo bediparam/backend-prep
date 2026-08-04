@@ -14,18 +14,13 @@ const firstNonRepeatingChar = (str) => {
     else map.set(char, 1);
   }
 
-  console.log(map);
-
-  let repeating = (char) => {
-    return map.get(char) > 1 ? true : false;
-  };
-
   for (let i = 0; i < str.length; i++) {
     const char = str[i];
-    if (!repeating(char)) return char;
+    if (map.get(char) == 1) return char;
   }
   return -1;
 };
 
 console.log(firstNonRepeatingChar("swiss"));
 console.log(firstNonRepeatingChar("swwiss"));
+console.log(firstNonRepeatingChar("swwiiss"));
