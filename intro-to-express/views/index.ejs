@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Intro to express assignment</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div class="p-4 rounded-lg mx-auto mt-32 w-[400px] bg-blue-300">
+      <form action="/submit" method="POST" class="flex flex-col">
+        <input
+          class="p-3 mt-3 border rounded-lg"
+          name="fullName"
+          type="text"
+          placeholder="Enter your name"
+        />
+        <input
+          class="p-3 mt-3 border rounded-lg"
+          name="email"
+          type="email"
+          placeholder="Enter your email"
+        />
+        <input
+          class="p-3 mt-3 border rounded-lg"
+          name="age"
+          type="number"
+          placeholder="Enter your age"
+        />
+        <input
+          class="p-3 mt-3 border rounded-lg"
+          name="color"
+          type="text"
+          placeholder="Enter favourite color"
+        />
+        <button class="p-3 mt-3 border rounded-lg bg-slate-400" type="submit">
+          Submit
+        </button>
+      </form>
+    </div>
+  </body>
+</html>
