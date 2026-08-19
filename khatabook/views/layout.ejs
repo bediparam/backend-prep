@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Intro to express assignment</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <section>
+      <!-- sidebar -->
+      <div class="w-[280px] h-screen bg-neutral-100 fixed">
+        <div class="h-14 border-b flex items-center">
+          <img
+            class="h-10 px-2"
+            src="https://www.gstatic.com/images/branding/productlogos/docs_2026/v2/web-48dp/logo_docs_2026_color_1x_web_48dp.png"
+            alt="khatabook logo"
+          />
+          <div>Khatabook</div>
+        </div>
+
+        <div class="px-2 mt-5">
+          <a
+            href="/create"
+            class="bg-neutral-200 py-2 px-5 w-full inline-block rounded-xl"
+            >Create a new doc</a
+          >
+        </div>
+
+        <!-- list docs -->
+        <div class="mt-3">
+            <% for(let i=0; i < files.length; i++) { %>
+                <a href="/edit/?filename=<%= files[i] %>">
+                <div class="p-2 mx-2 mb-2  border rounded-md"><%= files[i] %></div>
+
+                </a>
+            <% } %>
+        </div>
+      </div>
+
+      <!-- main bar -->
+      <div style="width: calc(100% - 280px)" class="ml-[280px] h-screen">
+        <div class="h-14 border-b flex items-center">
+            <% if (typeof filename != 'undefined' && filename) {%>
+                <div class="pl-3"><%= filename %></div>
+            <% } %>
+        </div>
+
+        <div class="mt-5 mx-5">
+            <%- body %>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
