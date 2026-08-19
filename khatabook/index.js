@@ -16,15 +16,22 @@ app.get("/", (req, res) => {
 });
 
 app.get("/create", (req, res) => {
-  let today = new Date();
-  let filename = today.toISOString().split("T")[0];
-  fs.writeFile(`./data/${filename}.txt`, "", (err) => {
+  fs.readdir("./data", (err, files) => {
+    if (err) res.send(err);
+    else {
+      res.render("create.ejs", { files: files });
+    }
+  });
+});
+
+app.post("/create-file", (req, res) => {
+  const { filename, filedata } = req.body;
+  fs.writeFile(`./data/${filename}`, filedata, (err) => {
     if (err) res.send(err);
     else {
       res.redirect("/");
     }
   });
-  res.send(filename);
 });
 
 app.get("/edit", (req, res) => {
