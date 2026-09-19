@@ -27,7 +27,10 @@ async function editProduct(req, res) {
   res.render("editProduct.ejs", { products: products, product: product });
 }
 
-async function deleteProduct(req, res) {}
+async function deleteProduct(req, res) {
+  const product = await Product.findByIdAndDelete(req.params.id);
+  res.redirect("/products");
+}
 
 module.exports = {
   getProducts,
