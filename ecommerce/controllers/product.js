@@ -11,4 +11,28 @@ async function createProduct(req, res) {
   res.redirect("/products");
 }
 
-module.exports = { getProducts, createProduct };
+async function updateProduct(req, res) {
+  const product = await Product.findByIdAndUpdate(req.params.id, {
+    name: req.body.name,
+    description: req.body.description,
+    imageUrl: req.body.imageUrl,
+    price: req.body.price,
+  });
+  res.redirect("/products");
+}
+
+async function editProduct(req, res) {
+  const products = await Product.find({});
+  const product = await Product.findById(req.params.id);
+  res.render("editProduct.ejs", { products: products, product: product });
+}
+
+async function deleteProduct(req, res) {}
+
+module.exports = {
+  getProducts,
+  createProduct,
+  editProduct,
+  updateProduct,
+  deleteProduct,
+};

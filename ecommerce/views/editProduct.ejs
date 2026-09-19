@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ecommerce</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-slate-300">
+
+    <div class="max-w-5xl bg-neutral-200 p-4 my-32 h-[100%] mx-auto mt-12 rounded-xl">
+
+        <h1 class="font-bold text-xl">Products</h1>
+
+        <div class="bg-neutral-50 mx-auto my-12 p-2 border rounded-xl grid grid-cols-2">
+            <% if (products.length > 0) {%>
+            <% products.forEach( (product) => { %>
+                <div class="m-2 border-2 rounded-xl p-2 flex flex-col gap-4"> 
+                    
+                    <h1 class="font-bold"><%= product.name %> </h1>
+                    <img class="w-20 h-20" src="<%=product.imageUrl%>" alt="<%=product.name%>">
+                    <p>Description: <%=product.description%></p>
+                    <p>Price: Rs <%=product.price%></p>
+                
+                </div>
+                
+            <% }) %>
+            <% } else {%>
+                <h1 class="font-bold text-xl">No Products Available</h1>
+            <% }%>
+        </div>
+    </div>
+
+    <div class="max-w-3xl p-4 fixed left-1 bottom-1">
+        <form action="/products/edit/<%=product._id%>" method="post" class="flex flex-col gap-2">
+            <input class="max-w-xl p-2 border rounded-lg" type="text" value="<%=product.name%>" name="name" placeholder="Name of product...">
+            <input class="max-w-xl p-2 border rounded-lg" type="text" value="<%=product.description%>" name="description" placeholder="Description of the product..." >
+            <input class="max-w-xl p-2 border rounded-lg" type="number" value="<%=product.price%>" name="price" placeholder="Price Amount...">
+            <input class="max-w-xl p-2 border rounded-lg" type="text" value="<%=product.imageUrl%>" name="imageUrl" placeholder="Enter Image Url">
+            <button class="max-w-xl p-2 border rounded-lg" type="submit">
+                Update Product
+            </button>
+        </form>
+    </div>
+
+  </body>
+</html>
