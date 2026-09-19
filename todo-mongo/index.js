@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
+const cookieParser = require("cookie-parser");
 const connectDB = require("./configs/db");
+const checkAuth = require("./middlewares/checkAuth");
 
 // Routes
 const todoRouter = require("./routes/todo");
@@ -12,7 +14,8 @@ app.set("view-engine", "ejs");
 
 connectDB();
 
-app.use("/todo", todoRouter);
+app.use(cookieParser());
+app.use("/todo", checkAuth, todoRouter);
 app.use("/user", userRouter);
 app.use("/", staticRouter);
 

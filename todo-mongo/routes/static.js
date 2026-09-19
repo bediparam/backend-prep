@@ -6,7 +6,7 @@ router.get("/register", (req, res) => {
 });
 
 router.get("/login", (req, res) => {
-  return res.render("../views/login.ejs");
+  return res.render("../views/login.ejs", { error: null });
 });
 
 module.exports = router;

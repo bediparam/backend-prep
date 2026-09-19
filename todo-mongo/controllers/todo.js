@@ -2,13 +2,16 @@ const express = require("express");
 const Todo = require("../models/Todo");
 
 async function getTodos(req, res) {
-  let todos = await Todo.find({ isCompleted: false });
+  let todos = await Todo.find({ isCompleted: false, createdBy: req.user._id });
   res.render("index.ejs", { todos: todos });
 }
 
 async function createTodo(req, res) {
   let { title } = req.body;
-  let todo = await Todo.create({ title: title });
+  let todo = await Todo.create({
+    title: title,
+    createdBy: req.user._id,
+  });
   res.redirect("/todo");
 }
 
