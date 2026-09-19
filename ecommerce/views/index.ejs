@@ -12,12 +12,15 @@
 
         <h1 class="font-bold text-xl">Products</h1>
 
-        <div class="bg-neutral-50 mx-auto my-12 p-2 border rounded-xl">
+        <div class="bg-neutral-50 mx-auto my-12 p-2 border rounded-xl grid grid-cols-2">
             <% if (products.length > 0) {%>
             <% products.forEach( (product) => { %>
-                <div class="m-2 border-2 rounded-xl p-2 flex gap-4"> 
+                <div class="m-2 border-2 rounded-xl p-2 flex flex-col gap-4"> 
                     
-                    <h1><%= product.name %> </h1>
+                    <h1 class="font-bold"><%= product.name %> </h1>
+                    <img class="w-20 h-20" src="<%=product.imageUrl%>" alt="<%=product.name%>">
+                    <p>Description: <%=product.description%></p>
+                    <p>Price: Rs <%=product.price%></p>
                 
                 </div>
                 
@@ -26,6 +29,18 @@
                 <h1 class="font-bold text-xl">No Products Available</h1>
             <% }%>
         </div>
+    </div>
+
+    <div class="max-w-3xl p-4 fixed left-1 bottom-1">
+        <form action="/products" method="post" class="flex flex-col gap-2">
+            <input class="max-w-xl p-2 border rounded-lg" type="text" name="name" placeholder="Name of product...">
+            <input class="max-w-xl p-2 border rounded-lg" type="text" name="description" placeholder="Description of the product..." >
+            <input class="max-w-xl p-2 border rounded-lg" type="number" name="price" placeholder="Price Amount...">
+            <input class="max-w-xl p-2 border rounded-lg" type="text" name="imageUrl" placeholder="Enter Image Url">
+            <button class="max-w-xl p-2 border rounded-lg" type="submit">
+                Add Product
+            </button>
+        </form>
     </div>
 
   </body>
