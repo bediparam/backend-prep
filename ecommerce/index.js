@@ -1,5 +1,8 @@
 const express = require("express");
 const connectDB = require("./configs/db");
+const cookieParser = require("cookie-parser");
+const checkAuth = require("./middlewares/checkAuth");
+
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
@@ -12,7 +15,8 @@ const userRouter = require("./routes/user");
 
 connectDB();
 
-app.use("/products", productRouter);
+app.use(cookieParser());
+app.use("/products", checkAuth, productRouter);
 app.use("/", staticRouter);
 app.use("/user", userRouter);
 
